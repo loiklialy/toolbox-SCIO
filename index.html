@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCIO Network — Outils pour l'entrepreneuriat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  --ink:#2D2C3D; --orange:#D87043; --paper:#FAFAF7; --cream:#EFE8DF; --tint:#F7F3EE;
+  --grey:#5F6472; --light:#8A8F9C; --rule:#D9D5CE; --card:#FFFFFF; --focus:#1F6FEB;
+  --sans:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'Public Sans',system-ui,'Segoe UI',sans-serif;
+  --maxw:1180px;
+}
+[data-theme="dark"]{
+  --ink:#F2F0EC; --orange:#E8865A; --paper:#1B1A24; --cream:#2A2935; --tint:#262531;
+  --grey:#B7BAC4; --light:#8E92A0; --rule:#3C3B4A; --card:#232230; --focus:#7FB0FF;
+}
+*{box-sizing:inherit}
+html{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--grey);
+  font-family:var(--serif); font-size:17px; line-height:1.6;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,.ui{font-family:var(--sans); color:var(--ink); margin:0}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+/* ---- Header (identité SIEVE) ---- */
+header.top{background:#2D2C3D; color:#fff; padding:14px 0; position:sticky; top:0; z-index:40}
+.brandrow{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap}
+.brand{font-family:var(--sans); font-weight:700; letter-spacing:.22em; font-size:1.25rem; color:#fff}
+.tagline{font-family:var(--sans); font-weight:600; font-size:.63rem; letter-spacing:.12em;
+  text-transform:uppercase; color:#E8865A}
+.topright{margin-left:auto; display:flex; gap:8px; align-items:center}
+.ghost{background:transparent; color:#D7D9E0; border:1px solid #4A4958; border-radius:999px;
+  font-family:var(--sans); font-size:.72rem; padding:5px 11px; cursor:pointer; text-decoration:none; display:inline-block}
+.ghost:hover{border-color:#D7D9E0}
+.ghost:focus-visible{outline:2px solid var(--focus); outline-offset:2px}
+.bar{height:3px; background:var(--orange); margin-top:14px}
+
+/* ---- Hero ---- */
+.hero{padding:54px 0 10px}
+.hero h1{font-size:clamp(1.7rem,3.6vw,2.5rem); font-weight:700; letter-spacing:.01em; max-width:21ch}
+.hero p.lede{max-width:66ch; font-size:1.05rem; margin:14px 0 0}
+
+/* ---- Cartes outils ---- */
+.tools{display:grid; grid-template-columns:1fr 1fr; gap:22px; padding:38px 0 10px}
+@media(max-width:760px){.tools{grid-template-columns:1fr}}
+.tool{background:var(--card); border:1px solid var(--rule); border-radius:14px; padding:30px 30px 26px;
+  display:flex; flex-direction:column; gap:12px; box-shadow:0 2px 14px rgba(45,44,61,.06);
+  text-decoration:none; color:inherit; transition:border-color .15s, transform .15s}
+.tool:hover{border-color:var(--orange); transform:translateY(-2px)}
+.tool:focus-visible{outline:3px solid var(--focus); outline-offset:3px}
+.tool .kicker{font-family:var(--sans); font-weight:600; font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange)}
+.tool h2{font-size:1.45rem}
+.tool p{margin:0; font-size:.97rem}
+.tool ul{margin:4px 0 0; padding-left:20px; font-size:.92rem; color:var(--grey)}
+.tool li{margin:3px 0}
+.tool .go{margin-top:auto; padding-top:14px; font-family:var(--sans); font-weight:600;
+  font-size:.92rem; color:var(--ink)}
+.tool .go::after{content:" →"; color:var(--orange)}
+
+/* ---- Note ---- */
+.note{background:var(--tint); border:1px solid var(--rule); border-radius:10px;
+  padding:14px 18px; font-size:.9rem; margin:26px 0 0}
+
+/* ---- Footer ---- */
+footer{margin-top:64px; border-top:1px solid var(--rule); padding:26px 0 40px; font-size:.85rem; color:var(--light)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <span class="brand">SCIO</span>
+      <span class="tagline" id="t-tagline">Outils pour l'entrepreneuriat</span>
+      <span class="topright">
+        <button class="ghost" id="langBtn" type="button" lang="en">English</button>
+        <button class="ghost" id="themeBtn" type="button">Sombre</button>
+      </span>
+    </div>
+  </div>
+  <div class="bar"></div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <h1 id="t-title">Deux outils pour passer de l'idée à l'action</h1>
+      <p class="lede" id="t-lede">SCIO Network met à disposition des structures d'accompagnement, des PME et des startups deux outils complémentaires : un filtre pour éprouver une idée de projet, et une boîte à outils pour l'exécuter avec les bons logiciels.</p>
+    </section>
+
+    <section class="tools">
+      <a class="tool" href="sieve/">
+        <span class="kicker" id="t-k1">Éprouver une idée</span>
+        <h2>SIEVE</h2>
+        <p id="t-d1">Un filtre à idées pour les projets agritech : six filtres successifs, vos observations consignées au fil du parcours, puis un résumé imprimable avec les prochaines actions recommandées.</p>
+        <ul id="t-l1">
+          <li>6 filtres structurés</li>
+          <li>Résumé imprimable / PDF</li>
+          <li>Données conservées sur votre appareil</li>
+        </ul>
+        <span class="go" id="t-g1">Ouvrir SIEVE</span>
+      </a>
+      <a class="tool" href="toolbox/">
+        <span class="kicker" id="t-k2">Passer à l'exécution</span>
+        <h2 id="t-n2">Toolbox IA &amp; No-code</h2>
+        <p id="t-d2">71 outils IA et no-code vérifiés pour le contexte algérien, répartis en 9 domaines : un parcours guidé en 4 questions ou un catalogue filtrable pour trouver les 2-3 outils adaptés à votre besoin.</p>
+        <ul id="t-l2">
+          <li>Parcours guidé personnalisé</li>
+          <li>Catalogue filtrable (domaine, niveau, modèle)</li>
+          <li>Accessibilité vérifiée : sans carte internationale, sans VPN</li>
+        </ul>
+        <span class="go" id="t-g2">Ouvrir la Toolbox</span>
+      </a>
+    </section>
+
+    <p class="note" id="t-note">Vos préférences de langue et d'affichage (clair/sombre) s'appliquent aux deux outils.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" id="t-foot">SCIO Network — Prototype · novembre 2026</div>
+</footer>
+
+<script>
+var I18N = {
+  fr: {
+    htmlLang:"fr", other:"English", otherCode:"en", theme:["Sombre","Clair"],
+    tagline:"Outils pour l'entrepreneuriat",
+    title:"Deux outils pour passer de l'idée à l'action",
+    lede:"SCIO Network met à disposition des structures d'accompagnement, des PME et des startups deux outils complémentaires : un filtre pour éprouver une idée de projet, et une boîte à outils pour l'exécuter avec les bons logiciels.",
+    k1:"Éprouver une idée",
+    d1:"Un filtre à idées pour les projets agritech : six filtres successifs, vos observations consignées au fil du parcours, puis un résumé imprimable avec les prochaines actions recommandées.",
+    l1:["6 filtres structurés","Résumé imprimable / PDF","Données conservées sur votre appareil"],
+    g1:"Ouvrir SIEVE",
+    k2:"Passer à l'exécution", n2:"Toolbox IA & No-code",
+    d2:"71 outils IA et no-code vérifiés pour le contexte algérien, répartis en 9 domaines : un parcours guidé en 4 questions ou un catalogue filtrable pour trouver les 2-3 outils adaptés à votre besoin.",
+    l2:["Parcours guidé personnalisé","Catalogue filtrable (domaine, niveau, modèle)","Accessibilité vérifiée : sans carte internationale, sans VPN"],
+    g2:"Ouvrir la Toolbox",
+    note:"Vos préférences de langue et d'affichage (clair/sombre) s'appliquent aux deux outils.",
+    foot:"SCIO Network — Prototype · novembre 2026",
+    docTitle:"SCIO Network — Outils pour l'entrepreneuriat"
+  },
+  en: {
+    htmlLang:"en", other:"Français", otherCode:"fr", theme:["Dark","Light"],
+    tagline:"Tools for entrepreneurship",
+    title:"Two tools to go from idea to action",
+    lede:"SCIO Network offers support structures, SMEs and startups two complementary tools: a filter to test a project idea, and a toolbox to execute it with the right software.",
+    k1:"Test an idea",
+    d1:"An idea filter for agritech ventures: six successive filters, your observations recorded along the way, then a printable summary with recommended next actions.",
+    l1:["6 structured filters","Printable / PDF summary","Data stays on your device"],
+    g1:"Open SIEVE",
+    k2:"Move to execution", n2:"AI & No-code Toolbox",
+    d2:"71 AI and no-code tools verified for the Algerian context, across 9 domains: a 4-question guided path or a filterable catalogue to find the 2-3 tools that fit your need.",
+    l2:["Personalised guided path","Filterable catalogue (domain, level, pricing model)","Verified accessibility: no international card, no VPN"],
+    g2:"Open the Toolbox",
+    note:"Your language and display (light/dark) preferences apply to both tools.",
+    foot:"SCIO Network — Prototype · November 2026",
+    docTitle:"SCIO Network — Tools for entrepreneurship"
+  }
+};
+
+var lang = "fr";
+try{
+  var l = localStorage.getItem("scio.lang");
+  if(l === "fr" || l === "en") lang = l;
+  else if((navigator.language||"").toLowerCase().indexOf("fr") !== 0) lang = "en";
+}catch(e){}
+
+var theme = "light";
+try{
+  var th = localStorage.getItem("scio.theme");
+  if(th === "dark" || th === "light") theme = th;
+  else if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+}catch(e){}
+
+function applyTheme(){
+  if(theme === "dark") document.documentElement.setAttribute("data-theme","dark");
+  else document.documentElement.removeAttribute("data-theme");
+  var T = I18N[lang];
+  document.getElementById("themeBtn").textContent = theme === "dark" ? T.theme[1] : T.theme[0];
+}
+function render(){
+  var T = I18N[lang];
+  document.documentElement.setAttribute("lang", T.htmlLang);
+  document.title = T.docTitle;
+  var map = {"t-tagline":"tagline","t-title":"title","t-lede":"lede","t-k1":"k1","t-d1":"d1","t-g1":"g1",
+             "t-k2":"k2","t-n2":"n2","t-d2":"d2","t-g2":"g2","t-note":"note","t-foot":"foot"};
+  for(var id in map) document.getElementById(id).textContent = T[map[id]];
+  ["t-l1","t-l2"].forEach(function(id, i){
+    var ul = document.getElementById(id); ul.innerHTML = "";
+    T[i===0?"l1":"l2"].forEach(function(s){ var li = document.createElement("li"); li.textContent = s; ul.appendChild(li); });
+  });
+  var lb = document.getElementById("langBtn");
+  lb.textContent = T.other; lb.setAttribute("lang", T.otherCode);
+  applyTheme();
+}
+document.getElementById("langBtn").onclick = function(){
+  lang = (lang === "fr") ? "en" : "fr";
+  try{ localStorage.setItem("scio.lang", lang); }catch(e){}
+  render();
+};
+document.getElementById("themeBtn").onclick = function(){
+  theme = (theme === "dark") ? "light" : "dark";
+  try{ localStorage.setItem("scio.theme", theme); }catch(e){}
+  applyTheme();
+};
+render();
+</script>
+</body>
+</html>
