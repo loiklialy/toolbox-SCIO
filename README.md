@@ -5,8 +5,8 @@ Produit web unifié regroupant deux outils complémentaires pour les structures 
 | Outil | Rôle | Chemin |
 |---|---|---|
 | **Accueil** | Page d'entrée commune présentant les deux outils | `/` |
-| **SIEVE** | Filtre à idées pour projets agritech : 6 filtres, observations, résumé imprimable | `/sieve/` |
-| **Toolbox IA & No-code** | 71 outils vérifiés pour le contexte algérien, 9 domaines, parcours guidé + catalogue filtrable | `/toolbox/` |
+| **SIEVE** | Filtre à idées pour projets agritech : 6 filtres, observations, résumé imprimable | `/idea-filter/` |
+| **Toolbox IA & No-code** | 71 outils vérifiés pour le contexte algérien, 9 domaines, parcours guidé + catalogue filtrable | `/AI-nocode/` |
 
 ## Caractéristiques communes
 
